@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const Doctor = require('./models/Doctor');
 
 const app = express();
+app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB!'))
@@ -10,6 +12,18 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get('/', (req, res) => {
   res.send('Hello, Healthcare Booking!');
+});
+app.post('/test-doctor', async (req, res) => {
+  try {
+    const newDoctor = await Doctor.create({
+      name: 'Dr. Sharma',
+      specialization: 'Cardiologist',
+      availableSlots: ['10:00 AM', '2:00 PM']
+    });
+    res.json(newDoctor);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.listen(3000, () => {
