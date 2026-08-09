@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Doctor = require('./models/Doctor');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB!'))
