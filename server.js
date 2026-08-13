@@ -3,10 +3,14 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const Doctor = require('./models/Doctor');
 const authRoutes = require('./routes/authRoutes');
+const doctorRoutes = require('./routes/doctorRoutes');
+const appointmentRoutes = require('./routes/appointmentRoutes');
 
 const app = express();
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/appointments', appointmentRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB!'))
