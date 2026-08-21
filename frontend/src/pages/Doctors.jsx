@@ -18,9 +18,9 @@ function Doctors() {
 
   return (
     <div>
-      <h1>Our Doctors</h1>
+      <h1 style={{ textAlign: 'center', margin: '30px 0', color: '#2c3e50' }}>Our Doctors</h1>
       {doctors.map((doctor) => (
-        <div key={doctor._id} style={{ border: '1px solid gray', margin: '10px', padding: '10px' }}>
+        <div key={doctor._id} className="doctor-card">
           <h3>{doctor.name}</h3>
           <p>Specialization: {doctor.specialization}</p>
           <p>Available Slots: {doctor.availableSlots.join(', ')}</p>

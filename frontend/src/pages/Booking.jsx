@@ -43,7 +43,7 @@ function Booking() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Book an Appointment</h1>
       <form onSubmit={handleBooking}>
         <input
@@ -52,7 +52,6 @@ function Booking() {
           value={patientId}
           onChange={(e) => setPatientId(e.target.value)}
         />
-        <br />
         <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
           <option value="">Select a Doctor</option>
           {doctors.map((doctor) => (
@@ -61,23 +60,20 @@ function Booking() {
             </option>
           ))}
         </select>
-        <br />
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <br />
         <input
           type="text"
           placeholder="Time Slot (e.g. 10:00 AM)"
           value={selectedSlot}
           onChange={(e) => setSelectedSlot(e.target.value)}
         />
-        <br />
         <button type="submit">Book Appointment</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }

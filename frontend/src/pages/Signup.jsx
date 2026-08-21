@@ -21,7 +21,7 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Signup</h1>
       <form onSubmit={handleSignup}>
         <input
@@ -30,21 +30,18 @@ function Signup() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <br />
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br />
         <button type="submit">Signup</button>
       </form>
     </div>
